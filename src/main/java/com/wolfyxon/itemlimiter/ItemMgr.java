@@ -54,7 +54,7 @@ public class ItemMgr {
         PlayerInventory inv = player.getInventory();
         int removedAmt = 0;
         for(ItemStack item : inv.getContents()){
-            if(processItem(item, player)){
+            if(item != null && processItem(item, player)){
                 removedAmt++;
             }
         }

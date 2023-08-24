@@ -2,6 +2,11 @@
 A simple Minecraft Spigot plugin that limits the size of items preventning book and shulker bans.  
 Supported on `1.14` and higher.  
 Tested on: `1.19.3` `1.19.4`
+
+## WARNING, WORK IN PROGRESS
+This plugin is still work in progress which means there could be major bugs that can cause item loss.
+Please don't use it on major servers yet. Report any bugs you find.
+
 ## Features
 - Limiting book page size
 - Removing items exceeding the limit on pick up, click in inventory and join

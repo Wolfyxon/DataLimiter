@@ -51,7 +51,7 @@ public class PlayerEvents  implements Listener {
         lastItem = e.getItem();
     }
 
-    void reAddHandItem(ItemStack item, Player player){
+    public void reAddHandItem(ItemStack item, Player player){
         if(item == null) return;
         PlayerInventory inv = player.getInventory();
         ItemStack im = inv.getItemInMainHand();

@@ -79,6 +79,9 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         ItemStack item = itemEntity.getItemStack();
+        if(itemAction(item,plr,e)){
+            itemEntity.remove();
+        }
     }
 
     @EventHandler

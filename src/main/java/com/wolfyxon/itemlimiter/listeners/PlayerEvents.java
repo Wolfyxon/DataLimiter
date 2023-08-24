@@ -68,6 +68,8 @@ public class PlayerEvents  implements Listener {
             BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
             Utils.reAddHandItem(lastItems.get(plr),plr);
+
+            e.setCancelled(true);
         }
     }
 

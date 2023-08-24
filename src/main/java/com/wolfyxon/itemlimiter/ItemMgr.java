@@ -45,4 +45,8 @@ public class ItemMgr {
     public boolean metaExceedsLimit(ItemMeta meta){
         return InstrumentationAgent.getObjectSize(meta) > getConfig().getMaxDataSize();
     }
+
+    public static int getItemSize(ItemStack item){
+        return item.serialize().toString().getBytes().length;
+    }
 }

@@ -36,7 +36,5 @@ public class Utils {
         inv.remove(item);
         inv.addItem(item);
     }
-    public static int getItemSize(ItemStack item){
-        return item.serialize().toString().getBytes().length;
-    }
+
 }

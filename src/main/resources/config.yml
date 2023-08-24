@@ -6,7 +6,7 @@
 # Maximum accepted item's NBT data size in bytes
 maxItemDataSize: 1024
 # Maximum amount of pages that books can have.
-maxBookPages: 70
+maxBookPages: 50
 # Items that have separate data size limits
 maxItemSizeOverrides:
 #  minecraft:item_name: 12345

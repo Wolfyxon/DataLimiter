@@ -45,6 +45,10 @@ public class PlayerEvents  implements Listener {
         Player plr = (Player) entity;
         Item itemEntity = e.getItem();
         ItemStack item = itemEntity.getItemStack();
+        if (plugin.itemMgr.processItem(item,plr)){
+            e.setCancelled(true);
+            itemEntity.remove();
+        }
     }
 
     @EventHandler

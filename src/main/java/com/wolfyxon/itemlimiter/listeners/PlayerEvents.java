@@ -1,6 +1,6 @@
-package com.wolfyxon.datalimiter.listeners;
+package com.wolfyxon.itemlimiter.listeners;
 
-import com.wolfyxon.datalimiter.DataLimiter;
+import com.wolfyxon.itemlimiter.ItemLimiter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -10,9 +10,9 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerEvents  implements Listener {
-    DataLimiter plugin;
+    ItemLimiter plugin;
 
-    public PlayerEvents(DataLimiter plugin) {
+    public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
     }
 

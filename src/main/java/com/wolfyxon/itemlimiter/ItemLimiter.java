@@ -1,9 +1,9 @@
-package com.wolfyxon.datalimiter;
+package com.wolfyxon.itemlimiter;
 
-import com.wolfyxon.datalimiter.listeners.PlayerEvents;
+import com.wolfyxon.itemlimiter.listeners.PlayerEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class DataLimiter extends JavaPlugin {
+public final class ItemLimiter extends JavaPlugin {
 
     public PlayerEvents playerEvents = new PlayerEvents(this);
 

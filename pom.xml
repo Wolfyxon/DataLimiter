@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wolfyxon</groupId>
-    <artifactId>DataLimiter</artifactId>
+    <artifactId>ItemLimiter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>DataLimiter</name>
+    <name>ItemLimiter</name>
 
     <description>A plugin that limits the size of data in items. Useful in preventing shulker/book bans</description>
     <properties>

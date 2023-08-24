@@ -1,4 +1,4 @@
-package com.wolfyxon.datalimiter;
+package com.wolfyxon.itemlimiter;
 
 import org.bukkit.ChatColor;
 

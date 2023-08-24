@@ -1,5 +1,6 @@
 package com.wolfyxon.itemlimiter.listeners;
 
+import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -16,6 +17,10 @@ public class PlayerEvents  implements Listener {
 
     public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
+    }
+
+    public ConfigMgr getConfig(){
+        return plugin.configMgr;
     }
 
     @EventHandler

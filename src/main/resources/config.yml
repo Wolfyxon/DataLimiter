@@ -21,6 +21,6 @@ messages:
   noPermission: "&4Access denied."
   limited:
     cantPickup: "&4The {itemName} you're trying to pick up could be a dangerous item that picking up might get you unable to join the server."
-    cleared: "&4{itemName} was removed from your inventory because it exceeded the maximum data size limit. This could've been a dangerous book or a shulker ban."
+    itemRemoved: "&4{itemName} was removed from your inventory because it was a potentially dangerous item."
     bookSaveCancelledData: "&4Your book was not saved because it exceeded the maximum data size limit. Please don't attempt to create book/shulker bans."
     bookSaveCancelledPages: "$4Your book was not saved because it exceeded the maximum amount of pages ({max})."

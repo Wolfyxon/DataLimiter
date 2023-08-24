@@ -30,10 +30,10 @@ public class ConfigMgr {
     }
 
     public static boolean hasPermission(String permission, Permissible permissible){
-        if(sender instanceof ConsoleCommandSender) return true;
-        if(sender.isOp()) return true;
+        if(permissible instanceof ConsoleCommandSender) return true;
+        if(permissible.isOp()) return true;
         String prefix = "itemlimiter.";
-        return sender.hasPermission(prefix+permission);
+        return permissible.hasPermission(prefix+permission);
     }
 
 

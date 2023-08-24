@@ -1,0 +1,34 @@
+# ItemLimiter configuration file
+# Report bugs and suggest features at:
+# https://github.com/Wolfyxon/ItemLimiter
+
+# WARNING: Do not set the values too low, or you will end up making a lot of players lose their valuable items!!!
+# Maximum accepted item's NBT data size in bytes
+maxItemDataSize: 1024
+# Maximum amount of pages that books can have.
+maxBookPages: 70
+# Items that have separate data size limits
+maxItemSizeOverrides:
+#  minecraft:item_name: 12345
+
+# Optional features that can be turned on or off.
+features:
+  # Clears existing books that exceeding the maximum amount of pages. Does not affect cancelling book saving.
+  clearBooksExceedingPageLimit: false
+
+# Sends an alert to the admins when a player attempts to do these things
+alerts:
+  # When a player attempts to save a book that exceeds the data size limit
+  bookSaveDataCancelled: true
+  # When a player attempts to save a book that exceeds the page limit
+  bookSavePagesCancelled: false
+  # When a player attempts to drop an item exceeding the limit
+  dropCleared: true
+
+messages:
+  noPermission: "&4Access denied."
+  limited:
+    cantPickup: "&4The {itemName} you're trying to pick up could be a dangerous item that picking up might get you unable to join the server."
+    cleared: "&4{itemName} was removed from your inventory because it exceeded the maximum data size limit. This could've been a dangerous book or a shulker ban."
+    bookSaveCancelledData: "&4Your book was not saved because it exceeded the maximum data size limit. Please don't attempt to create book/shulker bans."
+    bookSaveCancelledPages: "$4Your book was not saved because it exceeded the maximum amount of pages."

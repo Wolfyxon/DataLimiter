@@ -1,5 +1,7 @@
 package com.wolfyxon.itemlimiter;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.ArrayList;
@@ -34,4 +36,7 @@ public class ItemMgr {
         return meta;
     }
 
+    public static boolean isBook(ItemStack item){
+        return item.getType() == Material.WRITABLE_BOOK || item.getType() == Material.WRITTEN_BOOK;
+    }
 }

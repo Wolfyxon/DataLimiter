@@ -42,6 +42,10 @@ public class ItemMgr {
         return item.getType() == Material.WRITABLE_BOOK || item.getType() == Material.WRITTEN_BOOK;
     }
 
+    public boolean itemExceedsLimit(ItemStack item){
+        return getItemSize(item) > getConfig().getMaxDataSize();
+    }
+
     public static int getItemSize(ItemStack item){
         return item.serialize().toString().getBytes().length;
     }

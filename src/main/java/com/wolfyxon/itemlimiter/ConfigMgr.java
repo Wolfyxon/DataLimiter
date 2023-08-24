@@ -3,6 +3,7 @@ package com.wolfyxon.itemlimiter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.permissions.Permissible;
 
 public class ConfigMgr {
     FileConfiguration configFile;
@@ -28,7 +29,7 @@ public class ConfigMgr {
         return Utils.format( configFile.getString("messages."+localPath) );
     }
 
-    public static boolean hasPermission(String permission, CommandSender sender){
+    public static boolean hasPermission(String permission, Permissible permissible){
         if(sender instanceof ConsoleCommandSender) return true;
         if(sender.isOp()) return true;
         String prefix = "itemlimiter.";

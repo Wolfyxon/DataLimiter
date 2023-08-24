@@ -12,7 +12,6 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.BookMeta;
@@ -23,7 +22,6 @@ import java.util.List;
 public class PlayerEvents  implements Listener {
     ItemLimiter plugin;
     ItemStack lastItem;
-    EquipmentSlot lastHand;
 
     public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
@@ -48,7 +46,6 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){
-        lastHand = e.getHand();
         lastItem = e.getItem();
     }
 

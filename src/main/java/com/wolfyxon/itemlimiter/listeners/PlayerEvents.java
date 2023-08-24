@@ -34,7 +34,7 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         int removed = plugin.itemMgr.processPlayer(plr);
         if(removed>0){
-            plr.sendMessage("Removed "+String.valueOf(removed)+" items");
+            plr.sendMessage(getConfig().getMessage("itemsRemoved").replace("{count}",String.valueOf(removed)));
         }
     }
 

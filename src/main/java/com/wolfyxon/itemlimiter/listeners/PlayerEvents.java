@@ -8,6 +8,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -48,6 +49,13 @@ public class PlayerEvents  implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){
         lastItems.put(e.getPlayer(), e.getItem());
+    }
+
+    @EventHandler
+    public void onPlayerDropItem(EntityDropItemEvent e){
+        Entity entity = e.getEntity();
+        if(!(entity instanceof Player)) return;
+        Player plr = (Player) entity;
     }
 
     @EventHandler

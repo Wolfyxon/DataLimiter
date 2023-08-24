@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class PlayerEvents  implements Listener {
     ItemLimiter plugin;
+    ItemStack lastItem;
 
     public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
@@ -41,11 +43,14 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent e){
+        lastItem = e.getItem();
+    }
+
+    @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
-        ItemStack book = plr.getInventory().getItemInMainHand();
-
 
         if(newMeta.getPageCount() > getConfig().getMaxBookPages()){
             List<String> pages = newMeta.getPages();

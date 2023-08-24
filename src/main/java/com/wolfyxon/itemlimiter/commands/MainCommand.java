@@ -1,5 +1,6 @@
 package com.wolfyxon.itemlimiter.commands;
 
+import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import com.wolfyxon.itemlimiter.ItemLimiterCommand;
 import org.bukkit.command.Command;
@@ -81,7 +82,10 @@ public class MainCommand extends ItemLimiterCommand {
             sendMsg("&cUnrecognized option '"+strAction+"'",sender);
             return true;
         }
-
+        if(action.permission!=null && !ConfigMgr.hasPermission(action.permission,sender)){
+            sendMsg(getConfig().getMessage("noPermission"),sender);
+            return true;
+        }
         switch (action.getPrimaryAlias()){
             case "reload":{
                 getConfig().load();

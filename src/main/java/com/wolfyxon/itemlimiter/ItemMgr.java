@@ -50,7 +50,7 @@ public class ItemMgr {
         return false;
     }
 
-    public void processPlayer(Player player){
+    public int processPlayer(Player player){
         PlayerInventory inv = player.getInventory();
         int removedAmt = 0;
         for(ItemStack item : inv.getContents()){
@@ -58,9 +58,7 @@ public class ItemMgr {
                 removedAmt++;
             }
         }
-        if(removedAmt > 0){
-            player.sendMessage("Removed "+String.valueOf(removedAmt));
-        }
+        return removedAmt;
     }
 
     public static boolean isBook(ItemStack item){

@@ -38,7 +38,7 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onPlayerPickupItem(EntityPickupItemEvent e){
+    public void onEntityPickupItem(EntityPickupItemEvent e){
         Entity entity = e.getEntity();
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
@@ -52,10 +52,12 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onPlayerDropItem(EntityDropItemEvent e){
+    public void onEntityDropItem(EntityDropItemEvent e){
         Entity entity = e.getEntity();
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
+        Item itemEntity = e.getItemDrop();
+        ItemStack item = itemEntity.getItemStack();
     }
 
     @EventHandler

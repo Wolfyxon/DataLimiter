@@ -1,6 +1,7 @@
 package com.wolfyxon.itemlimiter;
 
 import com.wolfyxon.itemlimiter.commands.DataSizeCommand;
+import com.wolfyxon.itemlimiter.commands.MainCommand;
 import com.wolfyxon.itemlimiter.listeners.PlayerEvents;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,7 +18,7 @@ public final class ItemLimiter extends JavaPlugin {
         configMgr.load();
         getServer().getPluginManager().registerEvents(playerEvents, this);
 
-        registerCommand("itemlimiter", new ItemLimiterCommand(this));
+        registerCommand("itemlimiter", new MainCommand(this));
         registerCommand("datasize", new DataSizeCommand(this));
 
         getLogger().info("Running");

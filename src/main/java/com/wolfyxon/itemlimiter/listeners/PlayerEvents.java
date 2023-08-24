@@ -17,11 +17,12 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PlayerEvents  implements Listener {
     ItemLimiter plugin;
-    ItemStack lastItem;
+    HashMap<Player,ItemStack> lastItems = new HashMap<>();
 
     public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
@@ -46,7 +47,7 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){
-        lastItem = e.getItem();
+        lastItems.put(e.getPlayer(), e.getItem());
     }
 
     @EventHandler
@@ -64,7 +65,7 @@ public class PlayerEvents  implements Listener {
             }
             newMeta.setPages(newPages);
             e.setNewBookMeta(newMeta);
-            Utils.reAddHandItem(lastItem,plr);
+            Utils.reAddHandItem(lastItems.get(plr),plr);
         }
     }
 

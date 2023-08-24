@@ -68,7 +68,6 @@ public class PlayerEvents  implements Listener {
             newMeta.setPages(newPages);
             e.setNewBookMeta(newMeta);
             Utils.reAddHandItem(lastItem,plr);
-            //e.setCancelled(true);
         }
     }
 

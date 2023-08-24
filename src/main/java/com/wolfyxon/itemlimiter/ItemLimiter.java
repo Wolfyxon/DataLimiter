@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ItemLimiter extends JavaPlugin {
 
+    public ConfigMgr configMgr = new ConfigMgr(this);
     public PlayerEvents playerEvents = new PlayerEvents(this);
 
     @Override

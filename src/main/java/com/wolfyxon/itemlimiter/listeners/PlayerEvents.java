@@ -22,7 +22,7 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void nPlayerPickupItem(EntityPickupItemEvent e){
+    public void onPlayerPickupItem(EntityPickupItemEvent e){
         Entity entity = e.getEntity();
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;

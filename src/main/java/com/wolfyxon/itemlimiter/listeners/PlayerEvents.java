@@ -92,6 +92,7 @@ public class PlayerEvents  implements Listener {
         if(plugin.itemMgr.bookExceedsPageLimit(newMeta)){
             BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
+            item.setItemMeta(processedMeta);
             Utils.reAddHandItem(item,plr);
             plr.sendMessage(getConfig().getMessage("bookSaveCancelledPages")
                     .replace("{max}",String.valueOf(getConfig().getMaxBookPages()))

@@ -12,6 +12,7 @@ messages:
   noPermission: "&4Access denied."
   uncrecognizedOption: "&4Unrecognized option '{option}'"
   size: "&6Size of &2&l{itemName}&r: &d{size}b"
+  notHolding: "&cYou're not holding any item!"
   itemRemoved: "&4{itemName} &cwas removed from your inventory because it was a potentially dangerous item."
   itemsRemoved: "&4{count} &citems were removed from your inventory because they could potentially make you not able to join."
   bookSaveCancelledData: "&4Your book was not saved because it exceeded the maximum data size limit. Please don't attempt to create book/shulker bans."

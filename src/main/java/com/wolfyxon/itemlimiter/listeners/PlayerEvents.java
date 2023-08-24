@@ -41,7 +41,8 @@ public class PlayerEvents  implements Listener {
         Entity entity = e.getEntity();
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
-        Item item = e.getItem();
+        Item itemEntity = e.getItem();
+        ItemStack item = itemEntity.getItemStack();
     }
 
     @EventHandler

@@ -4,3 +4,10 @@ main: com.wolfyxon.itemlimiter.ItemLimiter
 api-version: 1.14
 authors: [ Wolfyxon ]
 description: A plugin that limits the size of data in items. Useful in preventing shulker/book bans
+commands:
+  itemlimiter:
+    description: Main ItemLimiter command
+    usage: /<command> [reload]
+  datasize:
+    description: Gets size in bytes of the held item
+    usage: /<command>

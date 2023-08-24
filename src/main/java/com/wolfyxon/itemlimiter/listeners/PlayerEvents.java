@@ -6,6 +6,7 @@ import com.wolfyxon.itemlimiter.Utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
@@ -53,16 +54,20 @@ public class PlayerEvents  implements Listener {
             plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
         }
     }
+
+    public boolean itemAction(ItemStack item, Player player, Cancellable cancellable){
+        if (plugin.itemMgr.processItem(item,player)){
+            cancellable.setCancelled(true);
+            player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
+        }
+        return false;
+    }
+
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
-        ItemStack item = e.getCurrentItem();
-        Player plr = (Player) e.getWhoClicked();
-        if (plugin.itemMgr.processItem(item,plr)){
-            e.setCurrentItem(null);
-            e.setCancelled(true);
-            plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
-        }
+        itemAction(e.getCurrentItem(),(Player) e.getWhoClicked(), e);
     }
+
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){

@@ -2,6 +2,7 @@ package com.wolfyxon.itemlimiter.listeners;
 
 import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
+import com.wolfyxon.itemlimiter.Utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -51,25 +52,6 @@ public class PlayerEvents  implements Listener {
         lastItem = e.getItem();
     }
 
-    public void reAddHandItem(ItemStack item, Player player){
-        if(item == null) return;
-        PlayerInventory inv = player.getInventory();
-        ItemStack im = inv.getItemInMainHand();
-        ItemStack io = inv.getItemInOffHand();
-        if(im !=null && item.isSimilar(im)){
-            inv.setItemInMainHand(null);
-            inv.setItemInMainHand(item);
-            return;
-        }
-        if (io !=null && item.isSimilar(io)) {
-            inv.setItemInOffHand(null);
-            inv.setItemInOffHand(item);
-            return;
-        }
-        inv.remove(item);
-        inv.addItem(item);
-    }
-
     @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
@@ -85,7 +67,7 @@ public class PlayerEvents  implements Listener {
             }
             newMeta.setPages(newPages);
             e.setNewBookMeta(newMeta);
-            reAddHandItem(lastItem,plr);
+            Utils.reAddHandItem(lastItem,plr);
             //e.setCancelled(true);
         }
     }

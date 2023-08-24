@@ -7,10 +7,6 @@
 maxItemDataSize: 1024
 # Maximum amount of pages that books can have.
 maxBookPages: 50
-# Items that have separate data size limits
-maxItemSizeOverrides:
-#  minecraft:item_name: 12345
-
 
 # Sends an alert to the admins when a player attempts to do these things
 alerts:

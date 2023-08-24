@@ -32,7 +32,10 @@ public class PlayerEvents  implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
-        plugin.itemMgr.processPlayer(plr);
+        int removed = plugin.itemMgr.processPlayer(plr);
+        if(removed>0){
+            plr.sendMessage("Removed "+String.valueOf(removed)+" items");
+        }
     }
 
     @EventHandler

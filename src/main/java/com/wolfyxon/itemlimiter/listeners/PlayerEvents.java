@@ -30,7 +30,7 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onPlayerLogin(PlayerLoginEvent e) {
+    public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
         plugin.itemMgr.processPlayer(plr);
     }

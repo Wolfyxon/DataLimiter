@@ -10,6 +10,7 @@ public final class ItemLimiter extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        configMgr.load();
         getServer().getPluginManager().registerEvents(playerEvents, this);
 
         getLogger().info("Running");

@@ -9,10 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerEditBookEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
@@ -33,7 +30,7 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
+    public void onPlayerLogin(PlayerLoginEvent e) {
         Player plr = e.getPlayer();
         plugin.itemMgr.processPlayer(plr);
     }

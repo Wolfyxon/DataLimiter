@@ -11,7 +11,7 @@ public class Utils {
     }
     public static String replaceMultiple(String str, Map<String,String> replacements){
         for(Map.Entry<String,String> e : replacements.entrySet()){
-            str.replace(e.getKey(),e.getValue());
+            str = str.replace(e.getKey(),e.getValue());
         }
         return str;
     }

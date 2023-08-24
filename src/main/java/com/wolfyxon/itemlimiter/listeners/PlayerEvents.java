@@ -50,21 +50,33 @@ public class PlayerEvents  implements Listener {
         lastItems.put(e.getPlayer(), e.getItem());
     }
 
+    public boolean bookExceedsPageLimit(BookMeta meta){
+        return meta.getPageCount() > getConfig().getMaxBookPages();
+    }
+
+    public BookMeta processBookMeta(BookMeta meta){
+        if(!bookExceedsPageLimit(meta)) return meta;
+
+        List<String> pages = meta.getPages();
+        List<String> newPages = new ArrayList<>();
+        for(int i=0;i<meta.getPageCount()-1;i++){
+            if(i+1 <= getConfig().getMaxBookPages()){
+                newPages.add(pages.get(i));
+            }
+        }
+        meta.setPages(newPages);
+
+        return meta;
+    }
+
     @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
 
-        if(newMeta.getPageCount() > getConfig().getMaxBookPages()){
-            List<String> pages = newMeta.getPages();
-            List<String> newPages = new ArrayList<>();
-            for(int i=0;i<newMeta.getPageCount()-1;i++){
-                if(i+1 <= getConfig().getMaxBookPages()){
-                    newPages.add(pages.get(i));
-                }
-            }
-            newMeta.setPages(newPages);
-            e.setNewBookMeta(newMeta);
+        if(bookExceedsPageLimit(newMeta)){
+            BookMeta processedMeta = processBookMeta(newMeta);
+            e.setNewBookMeta(processedMeta);
             Utils.reAddHandItem(lastItems.get(plr),plr);
         }
     }

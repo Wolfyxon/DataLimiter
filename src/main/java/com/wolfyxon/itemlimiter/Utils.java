@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class Utils {
@@ -35,6 +36,16 @@ public class Utils {
         }
         inv.remove(item);
         inv.addItem(item);
+    }
+
+    public static boolean hasMethod(Object object, String methodName) {
+        Method[] methods = object.getClass().getMethods();
+        for (Method method : methods) {
+            if (method.getName().equals(methodName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

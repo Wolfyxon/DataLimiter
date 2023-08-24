@@ -1,6 +1,7 @@
 package com.wolfyxon.itemlimiter;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -43,10 +44,10 @@ public class ItemMgr {
     }
 
     public boolean itemExceedsLimit(ItemStack item){
-        return getItemSize(item) > getConfig().getMaxDataSize();
+        return getSize(item) > getConfig().getMaxDataSize();
     }
 
-    public static int getItemSize(ItemStack item){
-        return item.serialize().toString().getBytes().length;
+    public static int getSize(ConfigurationSerializable serializable){
+        return serializable.serialize().toString().getBytes().length;
     }
 }

@@ -8,15 +8,6 @@ maxItemDataSize: 3072
 # Maximum amount of pages that books can have.
 maxBookPages: 50
 
-# Sends an alert to the admins when a player attempts to do these things
-alerts:
-  # When a player attempts to save a book that exceeds the data size limit
-  bookSaveDataCancelled: true
-  # When a player attempts to save a book that exceeds the page limit
-  bookSavePagesCancelled: false
-  # When a player attempts to drop an item exceeding the limit
-  dropCleared: true
-
 messages:
   noPermission: "&4Access denied."
   uncrecognizedOption: "&4Unrecognized option '{option}'"

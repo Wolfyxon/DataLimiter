@@ -20,7 +20,6 @@ alerts:
 messages:
   noPermission: "&4Access denied."
   limited:
-    cantPickup: "&4The {itemName} you're trying to pick up could be a dangerous item that picking up might get you unable to join the server."
     itemRemoved: "&4{itemName} was removed from your inventory because it was a potentially dangerous item."
     itemsRemoved: "&4{count} items were removed from your inventory because they could potentially make you not able to join."
     bookSaveCancelledData: "&4Your book was not saved because it exceeded the maximum data size limit. Please don't attempt to create book/shulker bans."

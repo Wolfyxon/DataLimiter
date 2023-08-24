@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.ArrayList;
@@ -50,6 +51,21 @@ public class PlayerEvents  implements Listener {
         lastItem = e.getItem();
     }
 
+    void reAddHandItem(ItemStack item, Player player){
+        if(item == null) return;
+        PlayerInventory inv = player.getInventory();
+        ItemStack im = inv.getItemInMainHand();
+        ItemStack io = inv.getItemInOffHand();
+        if(im !=null && item.isSimilar(im)){
+            inv.setItemInMainHand(null);
+            inv.setItemInMainHand(item);
+        }
+        if (io !=null && item.isSimilar(io)) {
+            inv.setItemInOffHand(null);
+            inv.setItemInOffHand(item);
+        }
+    }
+
     @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
@@ -65,7 +81,7 @@ public class PlayerEvents  implements Listener {
             }
             newMeta.setPages(newPages);
             e.setNewBookMeta(newMeta);
-
+            reAddHandItem(lastItem,plr);
             //e.setCancelled(true);
         }
     }

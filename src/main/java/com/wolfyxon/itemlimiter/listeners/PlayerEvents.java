@@ -92,7 +92,9 @@ public class PlayerEvents  implements Listener {
             BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
             Utils.reAddHandItem(lastItems.get(plr),plr);
-
+            plr.sendMessage(getConfig().getMessage("bookSaveCancelledPages")
+                    .replace("{max}",String.valueOf(getConfig().getMaxBookPages()))
+            );
             e.setCancelled(true);
         }
     }

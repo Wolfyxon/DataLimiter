@@ -30,11 +30,14 @@ public class DataSizeCommand extends ItemLimiterCommand {
         ItemStack item = plr.getInventory().getItemInMainHand();
 
         if(item == null){
-            sendMsg("You're not holding any item.",sender);
+            sendMsg(getConfig().getMessage("notHolding"), sender);
             return true;
         }
 
-        sendMsg("Size of "+item.getType().toString()+": "+String.valueOf(ItemMgr.getSize(item)),sender);
+        sendMsg(getConfig().getMessage("size")
+                .replace("{itemName}",item.getType().toString())
+                .replace("{size}",String.valueOf(ItemMgr.getSize(item)))
+                ,sender);
 
         return true;
     }

@@ -88,16 +88,18 @@ public class PlayerEvents  implements Listener {
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
-
+        ItemStack item = lastItems.get(plr);
         if(plugin.itemMgr.bookExceedsPageLimit(newMeta)){
             BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
-            Utils.reAddHandItem(lastItems.get(plr),plr);
+            Utils.reAddHandItem(item,plr);
             plr.sendMessage(getConfig().getMessage("bookSaveCancelledPages")
                     .replace("{max}",String.valueOf(getConfig().getMaxBookPages()))
             );
             e.setCancelled(true);
         }
+        itemAction(item,plr,e);
+
     }
 
 

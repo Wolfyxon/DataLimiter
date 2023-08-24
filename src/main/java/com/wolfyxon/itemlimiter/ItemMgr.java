@@ -3,12 +3,14 @@ package com.wolfyxon.itemlimiter;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemMgr {
     ItemLimiter plugin;
+
     public ItemMgr(ItemLimiter plugin){
         this.plugin = plugin;
     }
@@ -38,5 +40,9 @@ public class ItemMgr {
 
     public static boolean isBook(ItemStack item){
         return item.getType() == Material.WRITABLE_BOOK || item.getType() == Material.WRITTEN_BOOK;
+    }
+
+    public boolean metaExceedsLimit(ItemMeta meta){
+        return InstrumentationAgent.getObjectSize(meta) > getConfig().getMaxDataSize();
     }
 }

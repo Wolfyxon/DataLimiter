@@ -2,7 +2,9 @@ package com.wolfyxon.itemlimiter;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -37,6 +39,28 @@ public class ItemMgr {
         meta.setPages(newPages);
 
         return meta;
+    }
+
+    public boolean processItem(ItemStack item, Player player){
+        PlayerInventory inv = player.getInventory();
+        if(itemExceedsLimit(item)){
+            inv.remove(item);
+            return true;
+        }
+        return false;
+    }
+
+    public void processPlayer(Player player){
+        PlayerInventory inv = player.getInventory();
+        int removedAmt = 0;
+        for(ItemStack item : inv.getContents()){
+            if(processItem(item, player)){
+                removedAmt++;
+            }
+        }
+        if(removedAmt > 0){
+            player.sendMessage("Removed "+String.valueOf(removedAmt));
+        }
     }
 
     public static boolean isBook(ItemStack item){

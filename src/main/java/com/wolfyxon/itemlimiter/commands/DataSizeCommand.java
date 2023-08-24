@@ -1,5 +1,6 @@
 package com.wolfyxon.itemlimiter.commands;
 
+import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import com.wolfyxon.itemlimiter.ItemLimiterCommand;
 import com.wolfyxon.itemlimiter.ItemMgr;
@@ -20,6 +21,11 @@ public class DataSizeCommand extends ItemLimiterCommand {
             sendMsg("This command can only be run by a player.",sender);
             return true;
         }
+        if(!ConfigMgr.hasPermission("size",sender)){
+            sendMsg(getConfig().getMessage("noPermission"),sender);
+            return true;
+        }
+
         Player plr = (Player) sender;
         ItemStack item = plr.getInventory().getItemInMainHand();
 

@@ -59,11 +59,15 @@ public class PlayerEvents  implements Listener {
         if(im !=null && item.isSimilar(im)){
             inv.setItemInMainHand(null);
             inv.setItemInMainHand(item);
+            return;
         }
         if (io !=null && item.isSimilar(io)) {
             inv.setItemInOffHand(null);
             inv.setItemInOffHand(item);
+            return;
         }
+        inv.remove(item);
+        inv.addItem(item);
     }
 
     @EventHandler

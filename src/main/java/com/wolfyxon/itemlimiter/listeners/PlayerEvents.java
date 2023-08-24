@@ -58,6 +58,7 @@ public class PlayerEvents  implements Listener {
         ItemStack item = e.getCurrentItem();
         Player plr = (Player) e.getWhoClicked();
         if (plugin.itemMgr.processItem(item,plr)){
+            e.setCurrentItem(null);
             e.setCancelled(true);
             plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
         }

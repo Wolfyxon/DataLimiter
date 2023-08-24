@@ -11,10 +11,6 @@ maxBookPages: 50
 maxItemSizeOverrides:
 #  minecraft:item_name: 12345
 
-# Optional features that can be turned on or off.
-features:
-  # Clears existing books that exceeding the maximum amount of pages. Does not affect cancelling book saving.
-  clearBooksExceedingPageLimit: false
 
 # Sends an alert to the admins when a player attempts to do these things
 alerts:

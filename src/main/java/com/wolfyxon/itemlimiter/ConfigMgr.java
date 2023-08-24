@@ -14,5 +14,17 @@ public class ConfigMgr {
         configFile = plugin.getConfig();
     }
 
+    public int getMaxDataSize(){
+        return configFile.getInt("maxItemDataSize");
+    }
+
+    public int getMaxBookPages(){
+        return configFile.getInt("maxBookPages");
+    }
+
+    public String getMessage(String localPath){
+        return Utils.format( configFile.getString("messages."+localPath) );
+    }
+
 
 }

@@ -26,7 +26,6 @@ Permission `datalimiter.size`
 
 ## Dedication
 I made this plugin especially for a Polish server `crafted.pl` because I got angry that the admins blocked shulker boxes and books because of people using them to ban people. However books and shulkers were almost necessary on that server because of economy.  
-Hopefully the owner adds it.
 
 ## TODO
 - Alerts

@@ -25,7 +25,7 @@ public class ItemMgr {
     public boolean processItem(ItemStack item, PlayerInventory sourceInventory,boolean dontCheckContains){
         if(!dontCheckContains && !sourceInventory.contains(item)) return false;
         if(!itemExceedsLimit(item)) return false;
-        sourceInventory.remove(item);
+        removeItem(sourceInventory, item);
         return true;
     }
     public boolean processItem(ItemStack item, PlayerInventory sourceInventory){ return processItem(item,sourceInventory,false); }
@@ -37,7 +37,7 @@ public class ItemMgr {
         int res = 0;
         PlayerInventory inv = player.getInventory();
         for(ItemStack i : inv.getContents()){
-            if(processItem(i,inv,true)) res++;
+            if(i!=null && processItem(i,inv,true)) res++;
         }
         return res;
     }

@@ -92,7 +92,8 @@ public class PlayerEvents  implements Listener {
             );
             e.setCancelled(true);
         }
-        item = ItemMgr.getItemInSlot(plr,e.getSlot());
+        item = ItemMgr.getItemInSlot(plr,e.getSlot()).clone();
+        item.setItemMeta(newMeta);
         itemAction(item,plr,e);
 
     }

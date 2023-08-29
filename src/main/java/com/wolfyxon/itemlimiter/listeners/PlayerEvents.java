@@ -62,6 +62,7 @@ public class PlayerEvents  implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
         itemAction(e.getCurrentItem(),(Player) e.getWhoClicked(), e);
+        itemAction(e.getCursor(),(Player) e.getWhoClicked(), e);
     }
 
     @EventHandler

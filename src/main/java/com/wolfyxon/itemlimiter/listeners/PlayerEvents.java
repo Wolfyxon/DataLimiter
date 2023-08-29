@@ -34,7 +34,10 @@ public class PlayerEvents  implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
-
+        int count = plugin.itemMgr.processPlayer(plr);
+        if(count > 0){
+            plr.sendMessage(plugin.configMgr.getMessage("itemsRemoved").replace("{count}",String.valueOf(count)));
+        }
     }
 
     @EventHandler
@@ -43,8 +46,11 @@ public class PlayerEvents  implements Listener {
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
         Item itemEntity = e.getItem();
-        ItemStack item = itemEntity.getItemStack();
-
+        if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
+            plr.sendMessage(plugin.configMgr.getMessage("cantPickup").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
+            itemEntity.remove();
+            e.setCancelled(true);
+        }
     }
 
     @EventHandler
@@ -56,8 +62,10 @@ public class PlayerEvents  implements Listener {
     public void onPlayerDropItem(PlayerDropItemEvent e){
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
-        ItemStack item = itemEntity.getItemStack();
-
+        if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
+            plr.sendMessage(plugin.configMgr.getMessage("cantDrop").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
+            itemEntity.remove();
+        }
     }
 
     @EventHandler

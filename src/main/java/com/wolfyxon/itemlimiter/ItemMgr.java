@@ -61,7 +61,6 @@ public class ItemMgr {
         return meta;
     }
 
-
     public static boolean isBook(ItemStack item){
         return item.getType() == Material.WRITABLE_BOOK || item.getType() == Material.WRITTEN_BOOK;
     }
@@ -69,12 +68,12 @@ public class ItemMgr {
     public boolean itemExceedsLimit(ItemStack item){
         return getSize(item) > getConfig().getMaxDataSize();
     }
-
     public boolean itemExceedsLimit(Item itemEntity){ return itemExceedsLimit(itemEntity.getItemStack()); }
 
     public static int getSize(ConfigurationSerializable serializable){
         return serializable.serialize().toString().getBytes().length;
     }
+
     public static ItemStack getItemInSlot(PlayerInventory inventory, int slot) { //supports offhand
         if(slot == -1) return inventory.getItemInOffHand();
         return inventory.getItem(slot);

@@ -30,6 +30,14 @@ public class PlayerEvents  implements Listener {
         return plugin.configMgr;
     }
 
+    public boolean itemAction(ItemStack item, Player player, Cancellable cancellable){
+        if (plugin.itemMgr.processItem(item,player)){
+            cancellable.setCancelled(true);
+            player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
+        }
+        return false;
+    }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
@@ -49,14 +57,6 @@ public class PlayerEvents  implements Listener {
         if(itemAction(item,plr,e)){
             itemEntity.remove();
         }
-    }
-
-    public boolean itemAction(ItemStack item, Player player, Cancellable cancellable){
-        if (plugin.itemMgr.processItem(item,player)){
-            cancellable.setCancelled(true);
-            player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
-        }
-        return false;
     }
 
     @EventHandler

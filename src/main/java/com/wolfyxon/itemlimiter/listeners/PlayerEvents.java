@@ -66,11 +66,6 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onInventoryDrag(InventoryDragEvent e){
-        itemAction(e.getCursor(),(Player) e.getWhoClicked(),e);
-    }
-
-    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){
         lastItems.put(e.getPlayer(), e.getItem());
     }

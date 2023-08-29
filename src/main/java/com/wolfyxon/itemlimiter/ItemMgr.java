@@ -23,6 +23,25 @@ public class ItemMgr {
         return plugin.configMgr;
     }
 
+    public boolean processItem(ItemStack item, PlayerInventory sourceInventory){
+        if(!sourceInventory.contains(item)) return false;
+        if(!itemExceedsLimit(item)) return false;
+        sourceInventory.remove(item);
+        return true;
+    }
+    public boolean processItem(ItemStack item, Player player){
+        return processItem(item, player.getInventory());
+    }
+
+    public int processPlayer(Player player){
+        int res = 0;
+        PlayerInventory inv = player.getInventory();
+        for(ItemStack i : inv.getContents()){
+            if(processItem(i,inv)) res++;
+        }
+        return res;
+    }
+
     public boolean bookExceedsPageLimit(BookMeta meta){
         return meta.getPageCount() > getConfig().getMaxBookPages();
     }

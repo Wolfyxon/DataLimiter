@@ -17,6 +17,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class PlayerEvents  implements Listener {
@@ -30,22 +31,10 @@ public class PlayerEvents  implements Listener {
         return plugin.configMgr;
     }
 
-    public boolean itemAction(ItemStack item, Player player, Cancellable cancellable){
-        plugin.getLogger().info(String.valueOf(ItemMgr.getSize(item)));
-        if (plugin.itemMgr.processItem(item,player)){
-            //cancellable.setCancelled(true);
-            player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
-        }
-        return false;
-    }
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
-        int removed = plugin.itemMgr.processPlayer(plr);
-        if(removed>0){
-            plr.sendMessage(getConfig().getMessage("itemsRemoved").replace("{count}",String.valueOf(removed)));
-        }
+
     }
 
     @EventHandler
@@ -55,15 +44,12 @@ public class PlayerEvents  implements Listener {
         Player plr = (Player) entity;
         Item itemEntity = e.getItem();
         ItemStack item = itemEntity.getItemStack();
-        if(itemAction(item,plr,e)){
-            itemEntity.remove();
-        }
+
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
-        itemAction(e.getCurrentItem(),(Player) e.getWhoClicked(), e);
-        itemAction(e.getCursor(),(Player) e.getWhoClicked(), e);
+
     }
 
     @EventHandler
@@ -71,9 +57,7 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         ItemStack item = itemEntity.getItemStack();
-        if(itemAction(item,plr,e)){
-            itemEntity.remove();
-        }
+
     }
 
     @EventHandler
@@ -92,10 +76,6 @@ public class PlayerEvents  implements Listener {
             );
             e.setCancelled(true);
         }
-        item = ItemMgr.getItemInSlot(plr,e.getSlot()).clone();
-        item.setItemMeta(newMeta);
-        itemAction(item,plr,e);
-
     }
 
 

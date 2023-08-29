@@ -41,38 +41,6 @@ public class ItemMgr {
         return meta;
     }
 
-    public boolean processItem(ItemStack item, Player player){
-        PlayerInventory inv = player.getInventory();
-        if(!hasItem(inv,item)) return false;
-        if(itemExceedsLimit(item)){
-            removeItem(inv,item);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean processItem(int slot, Player player){
-        PlayerInventory inv = player.getInventory();
-        ItemStack item = null;
-        if(slot == -1) item = inv.getItemInOffHand();
-        else item = inv.getItem(slot);
-        if(itemExceedsLimit(item)){
-            removeItem(inv,slot);
-            return true;
-        }
-        return false;
-    }
-
-    public int processPlayer(Player player){
-        PlayerInventory inv = player.getInventory();
-        int removedAmt = 0;
-        for(ItemStack item : inv.getContents()){
-            if(item != null && processItem(item, player)){
-                removedAmt++;
-            }
-        }
-        return removedAmt;
-    }
 
     public static boolean isBook(ItemStack item){
         return item.getType() == Material.WRITABLE_BOOK || item.getType() == Material.WRITTEN_BOOK;

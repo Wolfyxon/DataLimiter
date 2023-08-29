@@ -46,6 +46,7 @@ public class ItemMgr {
         if(!inv.contains(item) && !inv.getItemInOffHand().equals(item)) return false;
         if(itemExceedsLimit(item)){
             inv.remove(item);
+            if(inv.getItemInOffHand().equals(item)) inv.setItemInOffHand(null);
             return true;
         }
         return false;

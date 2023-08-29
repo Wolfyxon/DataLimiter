@@ -73,4 +73,11 @@ public class ItemMgr {
     public static int getSize(ConfigurationSerializable serializable){
         return serializable.serialize().toString().getBytes().length;
     }
+    public static ItemStack getItemInSlot(PlayerInventory inventory, int slot) { //supports offhand
+        if(slot == -1) return inventory.getItemInOffHand();
+        return inventory.getItem(slot);
+    }
+    public static ItemStack getItemInSlot(Player player, int slot){
+        return getItemInSlot(player.getInventory(),slot);
+    }
 }

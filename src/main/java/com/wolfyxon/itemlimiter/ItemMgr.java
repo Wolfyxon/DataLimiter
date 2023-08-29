@@ -43,10 +43,9 @@ public class ItemMgr {
 
     public boolean processItem(ItemStack item, Player player){
         PlayerInventory inv = player.getInventory();
-        if(!inv.contains(item) && !inv.getItemInOffHand().equals(item)) return false;
+        if(!hasItem(player.getInventory(),item)) return false;
         if(itemExceedsLimit(item)){
-            inv.remove(item);
-            if(inv.getItemInOffHand().equals(item)) inv.setItemInOffHand(null);
+            removeItem(player.getInventory(),item);
             return true;
         }
         return false;
@@ -80,5 +79,15 @@ public class ItemMgr {
     }
     public static ItemStack getItemInSlot(Player player, int slot){
         return getItemInSlot(player.getInventory(),slot);
+    }
+
+    public static boolean hasItem(PlayerInventory inventory, ItemStack item){
+        if(inventory.getItemInOffHand().equals(item)) return true;
+        return inventory.contains(item);
+    }
+
+    public static void removeItem(PlayerInventory inventory, ItemStack item){
+        if(inventory.getItemInOffHand().equals(item)) inventory.setItemInOffHand(null);
+        inventory.remove(item);
     }
 }

@@ -2,6 +2,7 @@ package com.wolfyxon.itemlimiter.listeners;
 
 import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
+import com.wolfyxon.itemlimiter.ItemMgr;
 import com.wolfyxon.itemlimiter.Utils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -31,8 +32,9 @@ public class PlayerEvents  implements Listener {
     }
 
     public boolean itemAction(ItemStack item, Player player, Cancellable cancellable){
+        plugin.getLogger().info(String.valueOf(ItemMgr.getSize(item)));
         if (plugin.itemMgr.processItem(item,player)){
-            cancellable.setCancelled(true);
+            //cancellable.setCancelled(true);
             player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
         }
         return false;
@@ -72,14 +74,12 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent e){
-        //TODO: Alert admins if a player drop a dangerous item
-        //IMPORTANT: This event is fired alongside with onInventoryClick
-        /*Player plr = e.getPlayer();
+        Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         ItemStack item = itemEntity.getItemStack();
         if(itemAction(item,plr,e)){
             itemEntity.remove();
-        }*/
+        }
     }
 
     @EventHandler

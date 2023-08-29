@@ -17,4 +17,4 @@ messages:
   itemsRemoved: "&4{count} &citems were removed from your inventory because they could make you not able to join."
   cantDrop: "&cYou can't drop &4{itemName} &cbesaue it contains potentially dangerous data."
   cantPickup: "&cYou can't pick up &4{itemName} &cbesaue it contains potentially dangerous data."
-  bookSaveCancelledPages: "&cSome of your book's changes were not saved because their exceeded the {max} page limit."
+  bookSaveCancelledPages: "&cSome of your book changes were not saved because they exceeded the {max} page limit."

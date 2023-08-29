@@ -90,4 +90,9 @@ public class ItemMgr {
         if(inventory.getItemInOffHand().equals(item)) inventory.setItemInOffHand(null);
         inventory.remove(item);
     }
+
+    public static void removeItem(PlayerInventory inventory, int slot){
+        if(slot == -1) inventory.setItemInOffHand(null);
+        else inventory.setItem(slot,null);
+    }
 }

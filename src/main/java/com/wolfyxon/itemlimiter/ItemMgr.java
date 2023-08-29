@@ -51,6 +51,18 @@ public class ItemMgr {
         return false;
     }
 
+    public boolean processItem(int slot, Player player){
+        PlayerInventory inv = player.getInventory();
+        ItemStack item = null;
+        if(slot == -1) item = inv.getItemInOffHand();
+        else item = inv.getItem(slot);
+        if(itemExceedsLimit(item)){
+            removeItem(inv,slot);
+            return true;
+        }
+        return false;
+    }
+
     public int processPlayer(Player player){
         PlayerInventory inv = player.getInventory();
         int removedAmt = 0;

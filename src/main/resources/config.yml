@@ -3,8 +3,8 @@
 # https://github.com/Wolfyxon/ItemLimiter
 
 # WARNING: Do not set the values too low, or you will end up making a lot of players lose their valuable items!!!
-# Maximum accepted item's NBT data size in bytes
-maxItemDataSize: 3072
+# Maximum accepted item's NBT data size in bytes. Avoid using values lower than 4096 as it's higher than a shulkerbox filled with player heads.
+maxItemDataSize: 4096
 # Maximum amount of pages that books can have.
 maxBookPages: 50
 

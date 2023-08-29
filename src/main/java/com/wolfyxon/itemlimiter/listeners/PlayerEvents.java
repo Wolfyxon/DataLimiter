@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 public class PlayerEvents  implements Listener {
     ItemLimiter plugin;
-    HashMap<Player,ItemStack> lastItems = new HashMap<>();
 
     public PlayerEvents(ItemLimiter plugin) {
         this.plugin = plugin;
@@ -68,11 +67,6 @@ public class PlayerEvents  implements Listener {
     }
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent e){
-        lastItems.put(e.getPlayer(), e.getItem());
-    }
-
-    @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent e){
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
@@ -86,7 +80,8 @@ public class PlayerEvents  implements Listener {
     public void onPlayerEditBook(PlayerEditBookEvent e){
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
-        ItemStack item = lastItems.get(plr);
+        ItemStack item = ItemMgr.getItemInSlot(plr,e.getSlot());
+        plugin.getLogger().info(plr.getInventory().getItemInMainHand().toString());
         if(plugin.itemMgr.bookExceedsPageLimit(newMeta)){
             BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
@@ -97,6 +92,7 @@ public class PlayerEvents  implements Listener {
             );
             e.setCancelled(true);
         }
+        item = ItemMgr.getItemInSlot(plr,e.getSlot());
         itemAction(item,plr,e);
 
     }

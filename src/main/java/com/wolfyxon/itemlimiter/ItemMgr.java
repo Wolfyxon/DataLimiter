@@ -22,12 +22,13 @@ public class ItemMgr {
         return plugin.configMgr;
     }
 
-    public boolean processItem(ItemStack item, PlayerInventory sourceInventory){
-        if(!sourceInventory.contains(item)) return false;
+    public boolean processItem(ItemStack item, PlayerInventory sourceInventory,boolean dontCheckContains){
+        if(!dontCheckContains && !sourceInventory.contains(item)) return false;
         if(!itemExceedsLimit(item)) return false;
         sourceInventory.remove(item);
         return true;
     }
+    public boolean processItem(ItemStack item, PlayerInventory sourceInventory){ return processItem(item,sourceInventory,false); }
     public boolean processItem(ItemStack item, Player player){
         return processItem(item, player.getInventory());
     }
@@ -36,7 +37,7 @@ public class ItemMgr {
         int res = 0;
         PlayerInventory inv = player.getInventory();
         for(ItemStack i : inv.getContents()){
-            if(processItem(i,inv)) res++;
+            if(processItem(i,inv,true)) res++;
         }
         return res;
     }

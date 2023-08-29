@@ -43,9 +43,9 @@ public class ItemMgr {
 
     public boolean processItem(ItemStack item, Player player){
         PlayerInventory inv = player.getInventory();
-        if(!hasItem(player.getInventory(),item)) return false;
+        if(!hasItem(inv,item)) return false;
         if(itemExceedsLimit(item)){
-            removeItem(player.getInventory(),item);
+            removeItem(inv,item);
             return true;
         }
         return false;

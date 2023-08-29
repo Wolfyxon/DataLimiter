@@ -43,7 +43,7 @@ public class ItemMgr {
 
     public boolean processItem(ItemStack item, Player player){
         PlayerInventory inv = player.getInventory();
-        if(!inv.contains(item)) return false;
+        if(!inv.contains(item) && !inv.getItemInOffHand().equals(item)) return false;
         if(itemExceedsLimit(item)){
             inv.remove(item);
             return true;

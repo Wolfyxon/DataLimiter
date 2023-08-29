@@ -76,12 +76,14 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent e){
-        Player plr = e.getPlayer();
+        //TODO: Alert admins if a player drop a dangerous item
+        //IMPORTANT: This event is fired alongside with onInventoryClick
+        /*Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         ItemStack item = itemEntity.getItemStack();
         if(itemAction(item,plr,e)){
             itemEntity.remove();
-        }
+        }*/
     }
 
     @EventHandler

@@ -15,4 +15,6 @@ messages:
   notHolding: "&cYou're not holding any item!"
   itemRemoved: "&4{itemName} &cwas removed from your inventory because it was a potentially dangerous item."
   itemsRemoved: "&4{count} &citems were removed from your inventory because they could potentially make you not able to join."
+  cantDrop: "&cYou can't drop &4{itemName} &cbesaue it's a potentially dangerous item."
+  cantPickup: "&cYou can't pick up &4{itemName} &cbesaue it's a potentially dangerous item."
   bookSaveCancelledPages: "&cSome of your book's changes were not saved because their exceeded the {max} page limit."

@@ -4,6 +4,7 @@ import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import com.wolfyxon.itemlimiter.ItemMgr;
 import com.wolfyxon.itemlimiter.Utils;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -30,6 +31,13 @@ public class PlayerEvents  implements Listener {
 
     public ItemMgr getItemMgr(){
         return plugin.itemMgr;
+    }
+
+    public void sendItemRemoved(Player player, Material material){
+        player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",material.toString()));
+    }
+    public void sendItemRemoved(Player player, ItemStack item){
+        sendItemRemoved(player, item.getType());
     }
 
     @EventHandler

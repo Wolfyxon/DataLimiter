@@ -7,7 +7,7 @@ Tested on: `1.19.3` `1.19.4`
 - Limiting book page size
 - Removing items exceeding the limit on drop, pickup, and join
 - High configurability and nice explanation of every setting
-- Manual size checking of an item if `/datasize`
+- Manual size checking of an item in `/datasize`
 
 ## Commands
 ### /datalimiter

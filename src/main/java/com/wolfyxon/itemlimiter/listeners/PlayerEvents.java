@@ -27,6 +27,10 @@ public class PlayerEvents  implements Listener {
         return plugin.configMgr;
     }
 
+    public ItemMgr getItemMgr(){
+        return plugin.itemMgr;
+    }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();

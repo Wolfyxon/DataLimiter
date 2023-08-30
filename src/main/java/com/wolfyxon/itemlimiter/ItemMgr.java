@@ -34,12 +34,11 @@ public class ItemMgr {
         return processItem(item, player.getInventory());
     }
 
-    public boolean processItemInSlot(int slot, PlayerInventory inventory,boolean dontCheckContains){
+    public boolean processItemInSlot(int slot, PlayerInventory inventory){
         ItemStack item;
         if(slot == -1) item = inventory.getItemInOffHand();
         else item = inventory.getItem(slot);
         if(!isActualItem(item)) return false;
-        if(!dontCheckContains && !inventory.contains(item)) return false;
         if(!itemExceedsLimit(item)) return false;
 
         if(getConfig().getMode().equals("remove")){

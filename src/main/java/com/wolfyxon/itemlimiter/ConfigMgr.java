@@ -14,6 +14,7 @@ public class ConfigMgr {
     FileConfiguration configFile;
     ItemLimiter plugin;
     static List<String> modes = Arrays.asList("clearmeta", "remove");
+    static String defaultMode = "clearmeta";
 
     public ConfigMgr(ItemLimiter plugin){
         this.plugin = plugin;
@@ -44,7 +45,6 @@ public class ConfigMgr {
     }
 
     public String getMode(){
-        String defaultMode = "clearmeta";
         String mode = configFile.getString("mode").toLowerCase();
         if(mode.contains(mode)) return mode;
         return defaultMode;

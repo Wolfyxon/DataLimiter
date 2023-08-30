@@ -98,6 +98,10 @@ public class ItemMgr {
         else inventory.setItem(slot,null);
     }
 
+    public static ItemStack getWithoutMeta(ItemStack item){
+        return new ItemStack(item.getType());
+    }
+
     public static boolean isActualItem(Material material){
         return material != null && material.equals(Material.AIR);
     }

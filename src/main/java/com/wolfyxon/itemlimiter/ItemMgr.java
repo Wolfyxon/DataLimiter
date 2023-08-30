@@ -137,4 +137,12 @@ public class ItemMgr {
     public static boolean isActualItem(ItemStack item){
         return isActualItem(item.getType());
     }
+
+    public static int getSlot(ItemStack item, PlayerInventory inventory){
+        for(int i=-1;i<inventory.getSize();i++){
+            ItemStack it = getItemInSlot(inventory,i);
+            if(it != null && it.equals(item)) return i;
+        }
+        return -2;
+    }
 }

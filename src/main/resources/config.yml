@@ -19,6 +19,8 @@ features:
   scanOnPickup: true
   # Will scan the item in player's hand on click
   scanOnInteract: true
+  # EXPERIMENTAL!!! This scanner is buggy, and it's still under construction. Avoid using as it's not effective and may cause loss of valuable items.
+  scanOnInventoryClick: false
 
 messages:
   noPermission: "&4Access denied."

@@ -6,6 +6,7 @@
 # Maximum accepted item's NBT data size in bytes. Avoid using values lower than 4096 as it's higher than a shulkerbox filled with player heads.
 maxItemDataSize: 4096
 # Maximum amount of pages that books can have. Minecraft's limit is 100 but various hacks and exploits are able to bypass it.
+# Please don't set it too low as some players like to write long stories that are not meant to make any harm.
 maxBookPages: 50
 # What to do with item exceeding limit.
 #   clearMeta - will remove all the item's meta/NBT data, basically turns it back into a safe state

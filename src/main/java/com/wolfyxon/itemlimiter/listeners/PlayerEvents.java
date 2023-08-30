@@ -65,7 +65,7 @@ public class PlayerEvents  implements Listener {
         if(current == null) return;
         Player plr = (Player) e.getWhoClicked();
         if(getItemMgr().itemExceedsLimit(current)){
-            plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",current.getType().toString()));
+            sendItemRemoved(plr,current);
             e.setCurrentItem(null);
             e.setCancelled(true);
         }
@@ -78,7 +78,7 @@ public class PlayerEvents  implements Listener {
         if(item == null) return;
         Player plr = e.getPlayer();
         if(getItemMgr().processItem(item,plr)){
-            plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
+            sendItemRemoved(plr,item);
             e.setCancelled(true);
         }
     }

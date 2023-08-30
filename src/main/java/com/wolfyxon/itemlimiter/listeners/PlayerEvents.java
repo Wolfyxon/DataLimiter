@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
@@ -40,11 +41,24 @@ public class PlayerEvents  implements Listener {
         }
     }
 
-    /*
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
-        //TODO: Re-add item scanning and removing on inventory click. (Incorrect player's inventory timing was causing issues so I removed it until I figure out a better way)
-    }*/
+        if(e.getAction() == InventoryAction.NOTHING) return;
+        if(e.getAction() == InventoryAction.COLLECT_TO_CURSOR) return;
+        if(e.getAction() == InventoryAction.DROP_ALL_CURSOR) return;
+        if(e.getAction() == InventoryAction.DROP_ALL_SLOT) return;
+        if(e.getAction() == InventoryAction.DROP_ONE_CURSOR) return;
+        if(e.getAction() == InventoryAction.DROP_ONE_SLOT) return;
+
+        ItemStack current = e.getCurrentItem();
+        if(current == null) return;
+        Player plr = (Player) e.getWhoClicked();
+        if(getItemMgr().itemExceedsLimit(current)){
+            plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",current.getType().toString()));
+            e.setCurrentItem(null);
+            e.setCancelled(true);
+        }
+    }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){

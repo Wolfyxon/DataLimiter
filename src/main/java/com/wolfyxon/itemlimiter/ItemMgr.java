@@ -102,6 +102,16 @@ public class ItemMgr {
         return new ItemStack(item.getType());
     }
 
+    public static void setWithoutMeta(ItemStack item, PlayerInventory inventory, int slot){
+        if(item.getItemMeta() == null) return;
+        ItemStack newItem = getWithoutMeta(item);
+        if(slot == -1){
+            inventory.setItemInOffHand(newItem);
+        } else {
+            inventory.setItem(slot, newItem);
+        }
+    }
+
     public static boolean isActualItem(Material material){
         return material != null && material.equals(Material.AIR);
     }

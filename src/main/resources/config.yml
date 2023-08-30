@@ -8,6 +8,16 @@ maxItemDataSize: 4096
 # Maximum amount of pages that books can have.
 maxBookPages: 50
 
+features:
+  # Will trim edited book if it exceeds the page limit.
+  bookTrimming: true
+  # Master switch for scanning items.
+  itemScanning: true
+  # Will scan items when dropped (and remove if exceed limit)
+  scanOnDrop: true
+  # WIll scan items when picked up (and remove if exceed limit)
+  scanOnPickup: true
+
 messages:
   noPermission: "&4Access denied."
   uncrecognizedOption: "&4Unrecognized option '{option}'"

@@ -34,7 +34,7 @@ public class PlayerEvents  implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player plr = e.getPlayer();
-        int count = plugin.itemMgr.processPlayer(plr);
+        int count = getItemMgr().processPlayer(plr);
         if(count > 0){
             plr.sendMessage(getConfig().getMessage("itemsRemoved").replace("{count}",String.valueOf(count)));
         }
@@ -46,7 +46,7 @@ public class PlayerEvents  implements Listener {
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
         Item itemEntity = e.getItem();
-        if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
+        if(getItemMgr().itemExceedsLimit(itemEntity)){
             plr.sendMessage(getConfig().getMessage("cantPickup").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
             itemEntity.remove();
             e.setCancelled(true);
@@ -63,7 +63,7 @@ public class PlayerEvents  implements Listener {
     public void onPlayerDropItem(PlayerDropItemEvent e){
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
-        if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
+        if(getItemMgr().itemExceedsLimit(itemEntity)){
             plr.sendMessage(getConfig().getMessage("cantDrop").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
             itemEntity.remove();
         }
@@ -75,8 +75,8 @@ public class PlayerEvents  implements Listener {
         BookMeta newMeta = e.getNewBookMeta();
         ItemStack item = ItemMgr.getItemInSlot(plr,e.getSlot());
         plugin.getLogger().info(plr.getInventory().getItemInMainHand().toString());
-        if(plugin.itemMgr.bookExceedsPageLimit(newMeta)){
-            BookMeta processedMeta = plugin.itemMgr.processBookMeta(newMeta);
+        if(getItemMgr().bookExceedsPageLimit(newMeta)){
+            BookMeta processedMeta = getItemMgr().processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);
             item.setItemMeta(processedMeta);
             Utils.reAddHandItem(item,plr);

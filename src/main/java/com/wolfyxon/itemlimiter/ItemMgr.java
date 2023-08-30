@@ -135,7 +135,7 @@ public class ItemMgr {
     }
 
     public static boolean isActualItem(Material material){
-        return material != null && material.equals(Material.AIR);
+        return material != null && !material.equals(Material.AIR);
     }
     public static boolean isActualItem(ItemStack item){
         return isActualItem(item.getType());

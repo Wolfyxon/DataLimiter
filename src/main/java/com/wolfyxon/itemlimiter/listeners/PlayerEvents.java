@@ -40,6 +40,12 @@ public class PlayerEvents  implements Listener {
         }
     }
 
+    /*
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e){
+        //TODO: Re-add item scanning and removing on inventory click. (Incorrect player's inventory timing was causing issues so I removed it until I figure out a better way)
+    }*/
+
     @EventHandler
     public void onEntityPickupItem(EntityPickupItemEvent e){
         if(!getConfig().getItemScanningFeatureEnabled("scanOnPickup")) return;
@@ -53,12 +59,6 @@ public class PlayerEvents  implements Listener {
             e.setCancelled(true);
         }
     }
-
-    /*
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e){
-        //TODO: Re-add item scanning and removing on inventory click. (Incorrect player's inventory timing was causing issues so I removed it until I figure out a better way)
-    }*/
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent e){

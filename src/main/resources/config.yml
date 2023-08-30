@@ -13,6 +13,8 @@ features:
   bookTrimming: true
   # Master switch for scanning items.
   itemScanning: true
+  # Will scan players' inventories on join. This is the minimal (and most effective) layer of protection as it allows book/shulker banned players to join.
+  scanOnJoin: true
   # Will scan items when dropped (and remove if exceed limit)
   scanOnDrop: true
   # WIll scan items when picked up (and remove if exceed limit)

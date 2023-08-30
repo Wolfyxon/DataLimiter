@@ -5,8 +5,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.Permissible;
 
-import java.util.ArrayList;
-
 public class ConfigMgr {
     FileConfiguration configFile;
     ItemLimiter plugin;

@@ -7,6 +7,10 @@
 maxItemDataSize: 4096
 # Maximum amount of pages that books can have. Minecraft's limit is 100 but various hacks and exploits are able to bypass it.
 maxBookPages: 50
+# What to do with item exceeding limit.
+#   clearMeta - will remove all the item's meta/NBT data, basically turns it back into a safe state
+#   remove    - removes the item completely
+mode: "clearMeta"
 
 features:
   # Will trim edited book if it exceeds the page limit.

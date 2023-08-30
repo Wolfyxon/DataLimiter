@@ -1,12 +1,16 @@
 package com.wolfyxon.itemlimiter;
 
+import com.sun.tools.javac.util.List;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.Permissible;
 
+import java.util.ArrayList;
+
 public class ConfigMgr {
     FileConfiguration configFile;
     ItemLimiter plugin;
+    static List<String> modes = List.of("clearmeta","remove");
 
     public ConfigMgr(ItemLimiter plugin){
         this.plugin = plugin;
@@ -37,7 +41,10 @@ public class ConfigMgr {
     }
 
     public String getMode(){
-        return configFile.getString("mode").toLowerCase();
+        String defaultMode = "clearmeta";
+        String mode = configFile.getString("mode").toLowerCase();
+        if(mode.contains(mode)) return mode;
+        return defaultMode;
     }
 
     public String getMessage(String localPath){

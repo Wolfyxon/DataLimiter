@@ -28,6 +28,14 @@ public class ConfigMgr {
         return configFile.getBoolean("feature."+feature);
     }
 
+    public boolean itemScanningEnabled(){
+        return getFeatureEnabled("itemScanning");
+    }
+
+    public boolean getItemScanningFeatureEnabled(String feature){
+        return itemScanningEnabled() && getFeatureEnabled(feature);
+    }
+
     public String getMessage(String localPath){
         return Utils.format( configFile.getString("messages."+localPath) );
     }

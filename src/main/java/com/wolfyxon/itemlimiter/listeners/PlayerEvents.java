@@ -4,7 +4,6 @@ import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import com.wolfyxon.itemlimiter.ItemMgr;
 import com.wolfyxon.itemlimiter.Utils;
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;

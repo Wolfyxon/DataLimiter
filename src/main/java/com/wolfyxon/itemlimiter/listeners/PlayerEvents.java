@@ -108,7 +108,11 @@ public class PlayerEvents  implements Listener {
         Item itemEntity = e.getItemDrop();
         if(getItemMgr().itemExceedsLimit(itemEntity)){
             plr.sendMessage(getConfig().getMessage("cantDrop").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
-            itemEntity.remove();
+            if(getConfig().getMode().equals("remove")){
+                itemEntity.remove();
+            } else if (getConfig().getMode().equals("clearmeta")) {
+                itemEntity.setItemStack(ItemMgr.getWithoutMeta(itemEntity.getItemStack()));
+            }
         }
     }
 

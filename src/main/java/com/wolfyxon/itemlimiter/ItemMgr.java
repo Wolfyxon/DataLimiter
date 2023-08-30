@@ -26,8 +26,7 @@ public class ItemMgr {
         if(!isActualItem(item)) return false;
         if(!dontCheckContains && !sourceInventory.contains(item)) return false;
         if(!itemExceedsLimit(item)) return false;
-        removeItem(sourceInventory, item);
-        return true;
+        return processItemInSlot(getSlot(item,sourceInventory),sourceInventory);
     }
     public boolean processItem(ItemStack item, PlayerInventory sourceInventory){ return processItem(item,sourceInventory,false); }
     public boolean processItem(ItemStack item, Player player){

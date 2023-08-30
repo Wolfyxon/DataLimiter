@@ -120,7 +120,7 @@ public class PlayerEvents  implements Listener {
             e.setNewBookMeta(processedMeta);
             item.setItemMeta(processedMeta);
             Utils.reAddHandItem(item,plr);
-            plr.sendMessage(getConfig().getMessage("bookSaveCancelledPages")
+            plr.sendMessage(getConfig().getMessage("bookTrimmed")
                     .replace("{max}",String.valueOf(getConfig().getMaxBookPages()))
             );
             e.setCancelled(true);

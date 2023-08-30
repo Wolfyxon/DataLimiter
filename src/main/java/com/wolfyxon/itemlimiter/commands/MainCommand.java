@@ -88,7 +88,7 @@ public class MainCommand extends ItemLimiterCommand {
         }
         switch (action.getPrimaryAlias()){
             case "reload":{
-                getConfig().load();
+                getConfig().reload();
                 sendMsg("&aConfig reloaded",sender);
             }
         }

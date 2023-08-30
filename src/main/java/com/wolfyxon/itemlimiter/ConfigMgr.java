@@ -2,11 +2,14 @@ package com.wolfyxon.itemlimiter;
 
 import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permissible;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +25,14 @@ public class ConfigMgr {
 
     public void load(){
         configFile = plugin.getConfig();
+    }
+
+    public void reload(){
+        try {
+            configFile.load(plugin.getDataFolder().getAbsolutePath() + "/config.yml");
+        } catch (IOException | InvalidConfigurationException e){
+            e.printStackTrace();
+        }
     }
 
     public int getMaxDataSize(){

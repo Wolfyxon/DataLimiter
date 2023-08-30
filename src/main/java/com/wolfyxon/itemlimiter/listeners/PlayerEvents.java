@@ -124,6 +124,13 @@ public class PlayerEvents  implements Listener {
             );
             e.setCancelled(true);
         }
+        if(getConfig().getItemScanningFeatureEnabled("scanOnBookEdit")){
+            item = ItemMgr.getItemInSlot(plr,e.getSlot()); //re-get item in case it was trimmed
+            if(getItemMgr().itemExceedsLimit(item)){
+                ItemMgr.removeItem(plr.getInventory(),e.getSlot());
+                sendItemRemoved(plr,item);
+            }
+        }
     }
 
 

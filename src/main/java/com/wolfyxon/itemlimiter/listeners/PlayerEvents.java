@@ -47,6 +47,17 @@ public class PlayerEvents  implements Listener {
     }*/
 
     @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent e){
+        if(!getConfig().getItemScanningFeatureEnabled("scanOnInteract")) return;
+        ItemStack item = e.getItem();
+        if(item == null) return;
+        Player plr = e.getPlayer();
+        if(getItemMgr().processItem(item,plr)){
+            plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
+        }
+    }
+
+    @EventHandler
     public void onEntityPickupItem(EntityPickupItemEvent e){
         if(!getConfig().getItemScanningFeatureEnabled("scanOnPickup")) return;
         Entity entity = e.getEntity();

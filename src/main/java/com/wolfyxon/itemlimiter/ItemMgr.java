@@ -23,6 +23,7 @@ public class ItemMgr {
     }
 
     public boolean processItem(ItemStack item, PlayerInventory sourceInventory,boolean dontCheckContains){
+        if(!isActualItem(item)) return false;
         if(!dontCheckContains && !sourceInventory.contains(item)) return false;
         if(!itemExceedsLimit(item)) return false;
         removeItem(sourceInventory, item);

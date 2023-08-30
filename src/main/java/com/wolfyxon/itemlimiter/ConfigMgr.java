@@ -24,6 +24,10 @@ public class ConfigMgr {
         return configFile.getInt("maxBookPages");
     }
 
+    public boolean getFeatureEnabled(String feature){
+        return configFile.getBoolean("feature."+feature);
+    }
+
     public String getMessage(String localPath){
         return Utils.format( configFile.getString("messages."+localPath) );
     }

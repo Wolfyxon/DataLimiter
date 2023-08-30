@@ -38,6 +38,7 @@ public class ItemMgr {
         ItemStack item;
         if(slot == -1) item = inventory.getItemInOffHand();
         else item = inventory.getItem(slot);
+        if(item == null) return false;
         if(!isActualItem(item)) return false;
         if(!itemExceedsLimit(item)) return false;
 

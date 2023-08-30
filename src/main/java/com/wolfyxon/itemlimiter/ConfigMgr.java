@@ -1,7 +1,10 @@
 package com.wolfyxon.itemlimiter;
 
+import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permissible;
 
 import java.util.Arrays;
@@ -45,6 +48,13 @@ public class ConfigMgr {
         String mode = configFile.getString("mode").toLowerCase();
         if(mode.contains(mode)) return mode;
         return defaultMode;
+    }
+
+    public void sendItemRemoved(Player player, Material material){
+        player.sendMessage(getMessage("itemRemoved").replace("{itemName}",material.toString()));
+    }
+    public void sendItemRemoved(Player player, ItemStack item){
+        sendItemRemoved(player, item.getType());
     }
 
     public String getMessage(String localPath){

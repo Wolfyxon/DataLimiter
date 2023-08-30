@@ -33,13 +33,6 @@ public class PlayerEvents  implements Listener {
         return plugin.itemMgr;
     }
 
-    public void sendItemRemoved(Player player, Material material){
-        player.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",material.toString()));
-    }
-    public void sendItemRemoved(Player player, ItemStack item){
-        sendItemRemoved(player, item.getType());
-    }
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if(!getConfig().getItemScanningFeatureEnabled("scanOnJoin")) return;
@@ -65,7 +58,7 @@ public class PlayerEvents  implements Listener {
         if(current == null) return;
         Player plr = (Player) e.getWhoClicked();
         if(getItemMgr().itemExceedsLimit(current)){
-            sendItemRemoved(plr,current);
+            getConfig().sendItemRemoved(plr,current);
             e.setCurrentItem(null);
             e.setCancelled(true);
         }
@@ -78,7 +71,7 @@ public class PlayerEvents  implements Listener {
         if(item == null) return;
         Player plr = e.getPlayer();
         if(getItemMgr().processItem(item,plr)){
-            sendItemRemoved(plr,item);
+            getConfig().sendItemRemoved(plr,item);
             e.setCancelled(true);
         }
     }
@@ -141,7 +134,7 @@ public class PlayerEvents  implements Listener {
                     plr.getInventory().setItem(e.getSlot(),ItemMgr.getWithoutMeta(item));
                 }
 
-                sendItemRemoved(plr,item);
+                getConfig().sendItemRemoved(plr,item);
             }
         }
     }

@@ -54,6 +54,7 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         if(getItemMgr().processItem(item,plr)){
             plr.sendMessage(getConfig().getMessage("itemRemoved").replace("{itemName}",item.getType().toString()));
+            e.setCancelled(true);
         }
     }
 

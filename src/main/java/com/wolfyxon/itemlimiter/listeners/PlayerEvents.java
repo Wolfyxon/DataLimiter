@@ -42,6 +42,7 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onEntityPickupItem(EntityPickupItemEvent e){
+        if(!getConfig().getItemScanningFeatureEnabled("scanOnPickup")) return;
         Entity entity = e.getEntity();
         if(!(entity instanceof Player)) return;
         Player plr = (Player) entity;
@@ -61,6 +62,7 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent e){
+        if(!getConfig().getItemScanningFeatureEnabled("scanOnDrop")) return;
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         if(getItemMgr().itemExceedsLimit(itemEntity)){
@@ -71,6 +73,7 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerEditBook(PlayerEditBookEvent e){
+        if(!getConfig().getFeatureEnabled("bookTrimming")) return;
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
         ItemStack item = ItemMgr.getItemInSlot(plr,e.getSlot());

@@ -25,7 +25,7 @@ public class ConfigMgr {
     }
 
     public boolean getFeatureEnabled(String feature){
-        return configFile.getBoolean("feature."+feature);
+        return configFile.getBoolean("features."+feature);
     }
 
     public boolean itemScanningEnabled(){

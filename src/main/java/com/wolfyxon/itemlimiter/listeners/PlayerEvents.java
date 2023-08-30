@@ -74,7 +74,6 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         BookMeta newMeta = e.getNewBookMeta();
         ItemStack item = ItemMgr.getItemInSlot(plr,e.getSlot());
-        plugin.getLogger().info(plr.getInventory().getItemInMainHand().toString());
         if(getItemMgr().bookExceedsPageLimit(newMeta)){
             BookMeta processedMeta = getItemMgr().processBookMeta(newMeta);
             e.setNewBookMeta(processedMeta);

@@ -138,6 +138,7 @@ public class ItemMgr {
         return material != null && !material.equals(Material.AIR);
     }
     public static boolean isActualItem(ItemStack item){
+        if(item==null) return false;
         return isActualItem(item.getType());
     }
 

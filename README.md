@@ -22,7 +22,7 @@ Permission `datalimiter.size`
 
 ## Dedication
 I made this plugin especially for a Polish server `crafted.pl` because I got angry that the admins blocked shulker boxes and books because of people using them to ban people. However books and shulkers were almost necessary on that server because of economy.  
-
+EDIT: GUYS, THE OWNER SAID THAT HE MIGHT USE IT WAHOOO
 ## TODO
 - Proper item scanning and removing on inventory click (disabled for default because it's buggy)
 - Alerts

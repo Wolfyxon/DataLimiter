@@ -92,8 +92,12 @@ public class PlayerEvents  implements Listener {
         Item itemEntity = e.getItem();
         if(getItemMgr().itemExceedsLimit(itemEntity)){
             plr.sendMessage(getConfig().getMessage("cantPickup").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
-            itemEntity.remove();
-            e.setCancelled(true);
+            if(getConfig().getMode() == "remove"){
+                itemEntity.remove();
+                e.setCancelled(true);
+            } else if (getConfig().getMode() == "clearmeta") {
+                itemEntity.setItemStack(ItemMgr.getWithoutMeta(itemEntity.getItemStack()));
+            }
         }
     }
 

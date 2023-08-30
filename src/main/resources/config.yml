@@ -17,6 +17,8 @@ features:
   scanOnDrop: true
   # WIll scan items when picked up (and remove if exceed limit)
   scanOnPickup: true
+  # Will scan the item in player's hand on click
+  scanOnInteract: true
 
 messages:
   noPermission: "&4Access denied."

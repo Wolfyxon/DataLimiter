@@ -36,6 +36,10 @@ public class ConfigMgr {
         return itemScanningEnabled() && getFeatureEnabled(feature);
     }
 
+    public String getMode(){
+        return configFile.getString("mode").toLowerCase();
+    }
+
     public String getMessage(String localPath){
         return Utils.format( configFile.getString("messages."+localPath) );
     }

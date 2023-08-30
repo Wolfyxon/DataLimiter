@@ -34,6 +34,7 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
+        if(!getConfig().getItemScanningFeatureEnabled("scanOnJoin")) return;
         Player plr = e.getPlayer();
         int count = getItemMgr().processPlayer(plr);
         if(count > 0){

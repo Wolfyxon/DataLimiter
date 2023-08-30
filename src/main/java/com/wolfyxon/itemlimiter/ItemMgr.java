@@ -34,6 +34,25 @@ public class ItemMgr {
         return processItem(item, player.getInventory());
     }
 
+    public boolean processItemInSlot(int slot, PlayerInventory inventory,boolean dontCheckContains){
+        ItemStack item;
+        if(slot == -1) item = inventory.getItemInOffHand();
+        else item = inventory.getItem(slot);
+        if(!isActualItem(item)) return false;
+        if(!dontCheckContains && !inventory.contains(item)) return false;
+        if(!itemExceedsLimit(item)) return false;
+
+        if(getConfig().getMode().equals("remove")){
+            removeItem(inventory,slot);
+        } else if(getConfig().getMode().equals("clearmeta")){
+            ItemStack newItem = getWithoutMeta(item);
+            if(slot == -1) inventory.setItemInOffHand(newItem);
+            inventory.setItem(slot,newItem);
+        }
+
+        return true;
+    }
+
     public int processPlayer(Player player){
         int res = 0;
         PlayerInventory inv = player.getInventory();

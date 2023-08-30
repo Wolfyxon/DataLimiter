@@ -32,7 +32,7 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         int count = plugin.itemMgr.processPlayer(plr);
         if(count > 0){
-            plr.sendMessage(plugin.configMgr.getMessage("itemsRemoved").replace("{count}",String.valueOf(count)));
+            plr.sendMessage(getConfig().getMessage("itemsRemoved").replace("{count}",String.valueOf(count)));
         }
     }
 
@@ -43,7 +43,7 @@ public class PlayerEvents  implements Listener {
         Player plr = (Player) entity;
         Item itemEntity = e.getItem();
         if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
-            plr.sendMessage(plugin.configMgr.getMessage("cantPickup").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
+            plr.sendMessage(getConfig().getMessage("cantPickup").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
             itemEntity.remove();
             e.setCancelled(true);
         }
@@ -60,7 +60,7 @@ public class PlayerEvents  implements Listener {
         Player plr = e.getPlayer();
         Item itemEntity = e.getItemDrop();
         if(plugin.itemMgr.itemExceedsLimit(itemEntity)){
-            plr.sendMessage(plugin.configMgr.getMessage("cantDrop").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
+            plr.sendMessage(getConfig().getMessage("cantDrop").replace("{itemName}",itemEntity.getItemStack().getType().toString()));
             itemEntity.remove();
         }
     }

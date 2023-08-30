@@ -1,14 +1,16 @@
 package com.wolfyxon.itemlimiter;
 
-import com.sun.tools.javac.util.List;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.permissions.Permissible;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ConfigMgr {
     FileConfiguration configFile;
     ItemLimiter plugin;
-    static List<String> modes = List.of("clearmeta","remove");
+    static List<String> modes = Arrays.asList("clearmeta", "remove");
 
     public ConfigMgr(ItemLimiter plugin){
         this.plugin = plugin;

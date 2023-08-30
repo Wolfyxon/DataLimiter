@@ -96,4 +96,11 @@ public class ItemMgr {
         if(slot == -1) inventory.setItemInOffHand(null);
         else inventory.setItem(slot,null);
     }
+
+    public static boolean isActualItem(Material material){
+        return material != null && material.equals(Material.AIR);
+    }
+    public static boolean isActualItem(ItemStack item){
+        return isActualItem(item.getType());
+    }
 }

@@ -5,7 +5,7 @@ Tested on: `1.19.3` `1.19.4`
 
 ## Features
 - Limiting book page size
-- Removing items exceeding the limit on drop, pickup, and join
+- Removing items or their data exceeding the limit on drop, pickup, book edit and join
 - High configurability and nice explanation of every setting
 - Manual size checking of an item in `/datasize`
 

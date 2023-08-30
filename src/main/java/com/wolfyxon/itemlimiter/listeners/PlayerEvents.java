@@ -43,6 +43,8 @@ public class PlayerEvents  implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
+        if(!getConfig().getItemScanningFeatureEnabled("scanOnInventoryClick")) return;
+
         if(e.getAction() == InventoryAction.NOTHING) return;
         if(e.getAction() == InventoryAction.COLLECT_TO_CURSOR) return;
         if(e.getAction() == InventoryAction.DROP_ALL_CURSOR) return;

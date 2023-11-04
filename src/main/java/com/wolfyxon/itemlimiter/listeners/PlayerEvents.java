@@ -4,6 +4,7 @@ import com.wolfyxon.itemlimiter.ConfigMgr;
 import com.wolfyxon.itemlimiter.ItemLimiter;
 import com.wolfyxon.itemlimiter.ItemMgr;
 import com.wolfyxon.itemlimiter.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -70,6 +71,11 @@ public class PlayerEvents  implements Listener {
         if(item == null) return;
         Player plr = e.getPlayer();
         if(getItemMgr().processItem(item,plr)){
+            if(ItemMgr.isBook(item)){
+                // this closes the book GUI by overwriting it with inventory GUI then immediately closing it.
+                plr.openInventory(Bukkit.createInventory(null,9));
+                plr.closeInventory();
+            }
             getConfig().sendItemRemoved(plr,item);
             e.setCancelled(true);
         }

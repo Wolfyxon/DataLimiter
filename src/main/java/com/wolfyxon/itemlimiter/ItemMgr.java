@@ -54,10 +54,6 @@ public class ItemMgr {
     public int processPlayer(Player player){
         int res = 0;
         PlayerInventory inv = player.getInventory();
-        /*
-        for(ItemStack i : inv.getContents()){
-            if(i!=null && processItem(i,inv,true)) res++;
-        }*/
         for(int i=-1;i<inv.getSize();i++){
             if(processItemInSlot(i,inv)) res++;
         }

@@ -10,9 +10,9 @@ Tested on: `1.19.3` `1.19.4`
 - Manual size checking of an item in `/datasize`
 
 ## Commands
-### /datalimiter
+### /itemlimiter
 Main command. Displays only plugin and author info if no arguments are specified.
-#### /datalimiter reload
+#### /itemlimiter reload
 Reloads the plugin's config.  
 Permission: `itemlimiter.reload`
 
